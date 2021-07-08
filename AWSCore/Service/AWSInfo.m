@@ -118,16 +118,7 @@ static AWSServiceConfiguration *_identityPoolConfiguration = nil;
 }
 
 + (instancetype)defaultAWSInfo {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        if (_userConfig) {
-            _defaultAWSInfo = [[AWSInfo alloc] initWithConfiguration:_userConfig];
-        } else {
-            _defaultAWSInfo = [AWSInfo new];
-        }
-    });
-
-    return _defaultAWSInfo;
+    return [[AWSInfo alloc] initWithConfiguration:_userConfig];
 }
 
 + (void)configureDefaultAWSInfo:(NSDictionary<NSString *, id> *)config {
